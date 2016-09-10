@@ -18,7 +18,7 @@ env:
 
 before_install:
 # install build dependencies
-- sudo apt-get install libatlas3-base
+- if [[ $$TRAVIS_OS_NAME == 'linux']]; then sudo apt-get install libatlas3gf-base; fi;
 # use the correct version of node
 - rm -rf ~/.nvm/ && git clone --depth 1 https://github.com/creationix/nvm.git ~/.nvm
 - source ~/.nvm/nvm.sh
