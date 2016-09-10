@@ -18,7 +18,7 @@ addons:
     packages:
     # install toolchains
     - libmagic-dev
-    - libatlas3-base
+    - libatlas-base-dev
     - gcc-5
     - g++-5
     - clang-3.8
@@ -38,8 +38,6 @@ env:
     - NODE_VERSION="6.5.0"
 
 before_install:
-# help me debug
-- if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo apt-get install libmagic-dev ; fi;
 # use the correct version of node
 - rm -rf ~/.nvm/ && git clone --depth 1 https://github.com/creationix/nvm.git ~/.nvm
 - source ~/.nvm/nvm.sh
