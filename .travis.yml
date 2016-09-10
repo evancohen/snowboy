@@ -33,6 +33,8 @@ env:
     - NODE_VERSION="6.5.0"
 
 before_install:
+# help me debug
+- if [[ $TRAVIS_OS_NAME == 'linux' ]]; then locate libmagic.so ; fi;
 # use the correct version of node
 - rm -rf ~/.nvm/ && git clone --depth 1 https://github.com/creationix/nvm.git ~/.nvm
 - source ~/.nvm/nvm.sh
@@ -46,13 +48,15 @@ before_install:
 - npm install node-gyp -g
 # install aws-sdk so it is available for publishing
 - npm install aws-sdk
-# figure out if we should publish
+# figure out if we should publish or republish
 - PUBLISH_BINARY=false
+- REPUBLISH_BINARY=false
 # if we are building a tag then publish
 - if [[ $TRAVIS_BRANCH == `git describe --tags --always HEAD` ]]; then PUBLISH_BINARY=true; fi;
 # or if we put [publish binary] in the commit message
 - if test "${COMMIT_MESSAGE#*'[publish binary]'}" != "$COMMIT_MESSAGE"; then PUBLISH_BINARY=true; fi;
-
+# alternativly we can [republish binary] which will replace any existing binary
+- if test "${COMMIT_MESSAGE#*'[republish binary]'}" != "$COMMIT_MESSAGE"; then PUBLISH_BINARY=true && REPUBLISH_BINARY=true; fi;
 install:
 # ensure source install works
 - npm install --build-from-source
@@ -61,6 +65,7 @@ install:
 
 before_script:
 # if publishing, do it
+- if [[ $REPUBLISH_BINARY == true ]]; then node-pre-gyp package unpublish; fi;
 - if [[ $PUBLISH_BINARY == true ]]; then node-pre-gyp package publish; fi;
 # cleanup
 - node-pre-gyp clean
