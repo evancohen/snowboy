@@ -41,7 +41,7 @@ install:
 # ensure source install works
 - npm install --build-from-source
 # test our module
-- node index.js
+- node lib/node/index.js
 
 before_script:
 # if publishing, do it
