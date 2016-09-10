@@ -9,14 +9,14 @@ addons:
     sources:
     # add PPAs with more up-to-date toolchains
     - ubuntu-toolchain-r-test
-    - llvm-toolchain-precise-3.6
+    - llvm-toolchain-precise-3.9
     packages:
     # install toolchains
     - libmagic-dev
     - libatlas3-base
     - gcc-5
     - g++-5
-    - clang-3.6
+    - clang-3.9
 
 os:
 - linux
@@ -34,7 +34,7 @@ env:
 
 before_install:
 # help me debug
-- if [[ $TRAVIS_OS_NAME == 'linux' ]]; then locate libmagic.so ; fi;
+- if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo apt-get install libmagic-dev ; fi;
 # use the correct version of node
 - rm -rf ~/.nvm/ && git clone --depth 1 https://github.com/creationix/nvm.git ~/.nvm
 - source ~/.nvm/nvm.sh
