@@ -1,5 +1,10 @@
 language: cpp
 
+# Cache node dependencies
+cache:
+  directories:
+    - node_modules
+
 # Ubuntu 14.04 Trusty support
 sudo: required
 dist: trusty
@@ -16,7 +21,7 @@ addons:
     - libatlas3-base
     - gcc-5
     - g++-5
-    - clang-3.9
+    - clang-3.8
 
 os:
 - linux
