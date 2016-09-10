@@ -1,5 +1,23 @@
 language: cpp
- 
+
+# Ubuntu 14.04 Trusty support
+sudo: required
+dist: trusty
+
+addons:
+  apt:
+    sources:
+    # add PPAs with more up-to-date toolchains
+    - ubuntu-toolchain-r-test
+    - llvm-toolchain-precise-3.6
+    packages:
+    # install toolchains
+    - libtool
+    - libatlas3-base
+    - gcc-5
+    - g++-5
+    - clang-3.6
+
 os:
 - linux
 - osx
@@ -15,8 +33,6 @@ env:
     - NODE_VERSION="6.5.0"
 
 before_install:
-# install build dependencies
-- if [[ $TRAVIS_OS_NAME == 'linux' ]]; then sudo apt-get install libatlas3gf-base ; fi;
 # use the correct version of node
 - rm -rf ~/.nvm/ && git clone --depth 1 https://github.com/creationix/nvm.git ~/.nvm
 - source ~/.nvm/nvm.sh
