@@ -26,7 +26,7 @@
     "url": "git+https://github.com/evancohen/snowboy.git"
   },
   "gypfile": true,
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "dependencies": {
     "node-pre-gyp": "0.6.x"
   },
