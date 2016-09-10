@@ -12,7 +12,7 @@ addons:
     - llvm-toolchain-precise-3.6
     packages:
     # install toolchains
-    - libtool
+    - libmagic-dev
     - libatlas3-base
     - gcc-5
     - g++-5
