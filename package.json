@@ -1,6 +1,6 @@
 {
   "name": "snowboy",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Snowboy is a customizable hotword detection engine",
   "main": "lib/node/index.js",
   "binary": {
@@ -19,7 +19,8 @@
   "author": "Kitt-AI <snowboy@kitt.ai>",
   "contributors": [
     "Leandre Gohy <leandre.gohy@hexeo.be>",
-    "Evan Cohen <evanbtcohen@gmail.com>"
+    "Evan Cohen <evanbtcohen@gmail.com>",
+    "Carlos Knoke Flores <carlos@knoke.net>"
   ],
   "repository": {
     "type": "git",

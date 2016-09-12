@@ -8,16 +8,12 @@ const d = new SnowboyDetect({
   audioGain: 2.0
 });
 
-d.on('silence', function () {
-  console.log('silence');
+d.on('voiceactivity', function (voice) {
+  console.log('voiceactivity: ' + voice);
 });
 
-d.on('noise', function () {
-  console.log('noise');
-});
-
-d.on('error', function () {
-  console.log('error');
+d.on('error', function  (error) {
+  console.log(error);
 });
 
 d.on('hotword', function (index) {
