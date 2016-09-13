@@ -79,10 +79,11 @@ export class HotwordModels implements HotwordModels {
   }
 
   lookup(index: number): string {
-    if (index < 0 || this.lookupTable.length) {
+    const lookupIndex = index - 1;
+    if (lookupIndex < 0 || lookupIndex >= this.lookupTable.length) {
       throw new Error('Index out of bounds.');
     }
-    return this.lookupTable[index];
+    return this.lookupTable[lookupIndex];
   }
 
   numHotwords(): number {
@@ -187,3 +188,6 @@ export class SnowboyDetect extends stream.Writable implements SnowboyDetectInter
     }
   }
 }
+
+export const Detector = SnowboyDetect;
+export const Models = HotwordModels;

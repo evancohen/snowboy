@@ -6,7 +6,7 @@ const m = new Models();
 m.add({
   file: 'resources/snowboy.umdl',
   sensitivity: '0.5',
-  hotword : 'snowboy'
+  hotwords : 'snowboy'
 });
 
 const d = new Detector({
@@ -27,8 +27,8 @@ d.on('error', function () {
   console.log('error');
 });
 
-d.on('hotword', function (index) {
-  console.log('hotword', index);
+d.on('hotword', function (index, hotword) {
+  console.log('hotword', index, hotword);
 });
 
 const r = record.start({
