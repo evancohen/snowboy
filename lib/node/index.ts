@@ -12,6 +12,11 @@ enum DetectionResult {
   NOISE = 0
 }
 
+enum ModelType {
+  PMDL,
+  UMDL
+}
+
 interface HotwordModel {
   file: string;
   sensitivity?: string;
@@ -52,6 +57,12 @@ export class HotwordModels implements HotwordModels {
 
     if (fs.existsSync(model.file) === false) {
       throw new Error(`Model ${model.file} does not exists.`);
+    }
+
+    const type = path.extname(model.file).toUpperCase();
+
+    if (ModelType[type] === ModelType.PMDL && model.hotwords.length > 1) {
+      throw new Error('Personal models can define only one hotword.');
     }
 
     this.models.push(model);
