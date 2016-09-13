@@ -54,6 +54,7 @@ export class HotwordModels implements HotwordModels {
 
   add(model: HotwordModel) {
     model.hotwords = [].concat(model.hotwords);
+    model.sensitivity = model.sensitivity || "0.5";
 
     if (fs.existsSync(model.file) === false) {
       throw new Error(`Model ${model.file} does not exists.`);
@@ -108,6 +109,8 @@ export class SnowboyDetect extends stream.Writable implements SnowboyDetectInter
     if (this.nativeInstance.NumHotwords() !== options.models.numHotwords()) {
       throw new Error('Loaded hotwords count does not match number of hotwords defined.');
     }
+
+    this.nativeInstance.SetSensitivity(options.models.sensitivityString);
 
     if (options.audioGain) {
       this.nativeInstance.SetAudioGain(options.audioGain);
