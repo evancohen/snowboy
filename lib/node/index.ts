@@ -3,8 +3,8 @@ import * as path from 'path';
 import * as fs from 'fs';
 import * as binary from 'node-pre-gyp';
 
-const binding_path: string = binary.find(path.resolve(path.join(__dirname, '../../package.json')));
-const SnowboyDetectNative: SnowboyDetectNativeInterface = require(binding_path).SnowboyDetect;
+const bindingPath: string = binary.find(path.resolve(path.join(__dirname, '../../package.json')));
+const SnowboyDetectNative: SnowboyDetectNativeInterface = require(bindingPath).SnowboyDetect;
 
 enum DetectionResult {
   SILENCE = -2,
@@ -172,7 +172,7 @@ export class SnowboyDetect extends stream.Writable implements SnowboyDetectInter
 
       default:
         const hotword = this.models.lookup(index);
-        this.emit('hotword', hotword);
+        this.emit('hotword', index, hotword);
         break;
     }
   }
