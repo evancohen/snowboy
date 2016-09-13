@@ -156,6 +156,13 @@ export class SnowboyDetect extends stream.Writable implements SnowboyDetectInter
     return this.nativeInstance.BitsPerSample();
   }
 
+  // Stream implementation
+  _write (chunk, encoding, callback) {
+    const index = this.nativeInstance.RunDetection(chunk);
+    this.processDetectionResult(index);
+    return callback();
+  }
+
   private processDetectionResult(index: number): void {
     switch (index) {
       case DetectionResult.ERROR:
