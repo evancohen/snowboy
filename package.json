@@ -14,7 +14,7 @@
     "preinstall": "npm install node-pre-gyp",
     "install": "node-pre-gyp install --fallback-to-build",
     "test": "node index.js",
-    "prepublish": "npm ls"
+    "prepublish": "tsc --listFiles"
   },
   "author": "Kitt-AI <snowboy@kitt.ai>",
   "contributors": [
@@ -33,7 +33,8 @@
   "devDependencies": {
     "@types/node": "^6.0.38",
     "aws-sdk": "2.x",
-    "nan": "^2.4.0"
+    "nan": "^2.4.0",
+    "typescript": "^2.0.2"
   },
   "bugs": {
     "url": "https://github.com/Kitt-AI/snowboy/issues"

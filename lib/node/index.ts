@@ -24,7 +24,7 @@ interface HotwordModel {
 }
 
 interface HotwordModelsInterface {
-  add(model: HotwordModel);
+  add(model: HotwordModel): void;
   lookup(index: number): string;
   numHotwords(): number;
 }
@@ -161,7 +161,7 @@ export class SnowboyDetect extends stream.Writable implements SnowboyDetectInter
   }
 
   // Stream implementation
-  _write (chunk, encoding, callback) {
+  _write(chunk: Buffer, encoding: string, callback: Function) {
     const index = this.nativeInstance.RunDetection(chunk);
     this.processDetectionResult(index);
     return callback();
