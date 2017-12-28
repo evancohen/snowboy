@@ -46,7 +46,7 @@
             '-fno-exceptions'
         ],
         'include_dirs': [
-            "<!(nodejs -e \"require('nan')\")",
+            "<!(node -e \"require('nan')\")",
             "<!(pwd)/include"
         ],
         'libraries': [
