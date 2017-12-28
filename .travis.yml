@@ -46,8 +46,8 @@ before_install:
 - export PATH=$(pwd)/node_modules/.bin:${PATH}
 # put global node-gyp on PATH
 - npm install node-gyp -g
-# install aws-sdk and nan so they are available for publishing
-- npm install aws-sdk nan
+# install dev dependencies
+- npm install --only=dev
 # figure out if we should publish or republish
 - PUBLISH_BINARY=false
 - REPUBLISH_BINARY=false
