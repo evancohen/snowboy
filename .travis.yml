@@ -47,7 +47,7 @@ before_install:
 # put global node-gyp on PATH
 - npm install node-gyp -g
 # install dev dependencies
-- npm install --only=dev
+- npm install aws-sdk nan typescript @types/node
 # figure out if we should publish or republish
 - PUBLISH_BINARY=false
 - REPUBLISH_BINARY=false
