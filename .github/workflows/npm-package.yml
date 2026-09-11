@@ -38,7 +38,7 @@ jobs:
           cd "$RUNNER_TEMP/snowboy-consumer"
           npm init -y
           npm install --no-audit --no-fund "$GITHUB_WORKSPACE/snowboy-1.4.0-rc.0.tgz"
-          node "$GITHUB_WORKSPACE/test/smoke.js"
+          SNOWBOY_CONSUMER=1 node "$GITHUB_WORKSPACE/test/smoke.js"
       - name: Keep tested release candidate
         if: matrix.node == '20'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4

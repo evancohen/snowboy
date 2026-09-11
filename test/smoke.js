@@ -2,7 +2,9 @@
 
 const assert = require('assert')
 const path = require('path')
-const root = path.dirname(require.resolve('snowboy/package.json', { paths: [process.cwd()] }))
+const root = process.env.SNOWBOY_CONSUMER
+  ? path.dirname(require.resolve('snowboy/package.json', { paths: [process.cwd()] }))
+  : path.resolve(__dirname, '..')
 const { Models, Detector } = require(root)
 const models = new Models()
 models.add({ file: path.join(root, 'resources/models/snowboy.umdl'), hotwords: 'snowboy' })

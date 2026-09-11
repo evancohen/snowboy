@@ -49,8 +49,17 @@
     "swig/Node/snowboy.cc",
     "lib/node/*.js",
     "lib/node/*.d.ts",
-    "lib/*/libsnowboy-detect.a",
-    "resources",
+    "lib/ubuntu64/libsnowboy-detect.a",
+    "lib/rpi/libsnowboy-detect.a",
+    "lib/aarch64-ubuntu1604/libsnowboy-detect.a",
+    "lib/osx/libsnowboy-detect.a",
+    "resources/common.res",
+    "resources/models",
+    "resources/*.wav",
+    "resources/*.raw",
+    "resources/alexa/*.umdl",
+    "resources/alexa/alexa-avs-sample-app/alexa.umdl",
+    "test/smoke.js",
     "RELEASE-NOTES.md"
   ]
 }
