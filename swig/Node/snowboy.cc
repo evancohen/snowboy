@@ -35,7 +35,7 @@ SnowboyDetect::SnowboyDetect(const std::string& resource_filename,
                              const std::string& model_str) {
   try {
     this->detector = new snowboy::SnowboyDetect(resource_filename, model_str);
-  } catch (std::runtime_error e) {
+  } catch (std::runtime_error const& e) {
     Nan::ThrowError(e.what());
   }
 }

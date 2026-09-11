@@ -1,7 +1,7 @@
 import * as stream from 'stream';
 import * as path from 'path';
 import * as fs from 'fs';
-import * as binary from 'node-pre-gyp';
+import * as binary from '@mapbox/node-pre-gyp';
 
 const bindingPath: string = binary.find(path.resolve(path.join(__dirname, '../../package.json')));
 const SnowboyDetectNative: SnowboyDetectNativeInterface = require(bindingPath).SnowboyDetect;
@@ -65,7 +65,7 @@ export class HotwordModels implements HotwordModels {
 
     const type = path.extname(model.file).toUpperCase();
 
-    if (ModelType[type] === ModelType.PMDL && model.hotwords.length > 1) {
+    if (ModelType[type as keyof typeof ModelType] === ModelType.PMDL && model.hotwords.length > 1) {
       throw new Error('Personal models can define only one hotword.');
     }
 
@@ -120,7 +120,7 @@ export class SnowboyDetect extends stream.Writable implements SnowboyDetectInter
       this.nativeInstance.SetAudioGain(options.audioGain);
     }
 
-    if (options.applyFrontend) {
+    if (typeof options.applyFrontend === 'boolean') {
       this.nativeInstance.ApplyFrontend(options.applyFrontend);
     }
 
