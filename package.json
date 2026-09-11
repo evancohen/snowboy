@@ -14,8 +14,7 @@
   "scripts": {
     "install": "node-pre-gyp rebuild",
     "build": "tsc -p tsconfig.json",
-    "prepack": "npm run build",
-    "test": "node test/smoke.js"
+    "prepack": "npm run build"
   },
   "author": "KITT.AI <snowboy@kitt.ai>",
   "contributors": [
@@ -59,7 +58,6 @@
     "resources/*.raw",
     "resources/alexa/*.umdl",
     "resources/alexa/alexa-avs-sample-app/alexa.umdl",
-    "test/smoke.js",
     "RELEASE-NOTES.md"
   ]
 }
