@@ -1,6 +1,6 @@
 {
   "name": "snowboy",
-  "version": "1.3.1-alpha.1",
+  "version": "1.4.0-rc.0",
   "description": "Snowboy is a customizable hotword detection engine",
   "main": "lib/node/index.js",
   "typings": "lib/node/index.d.ts",
@@ -12,9 +12,10 @@
     "host": "https://evancohen-snowboy.s3-us-west-2.amazonaws.com"
   },
   "scripts": {
-    "install": "node-pre-gyp install --fallback-to-build",
-    "test": "node index.js",
-    "prepublish": "tsc --listFiles"
+    "install": "node-pre-gyp rebuild",
+    "build": "tsc -p tsconfig.json",
+    "prepack": "npm run build",
+    "test": "node test/smoke.js"
   },
   "author": "KITT.AI <snowboy@kitt.ai>",
   "contributors": [
@@ -28,15 +29,28 @@
   "gypfile": true,
   "license": "Apache-2.0",
   "dependencies": {
-    "node-pre-gyp": "^0.13.0"
+    "@mapbox/node-pre-gyp": "^1.0.11",
+    "nan": "^2.20.0",
+    "node-gyp": "^9.4.1"
   },
   "devDependencies": {
-    "@types/node": "^6.14.6",
-    "aws-sdk": "2.x",
-    "nan": "^2.4.0",
-    "typescript": "^2.0.2"
+    "@types/node": "^20.14.9",
+    "typescript": "^5.5.2"
   },
   "bugs": {
     "url": "https://github.com/Kitt-AI/snowboy/issues"
-  }
+  },
+  "engines": {
+    "node": ">=14.17 <23"
+  },
+  "files": [
+    "binding.gyp",
+    "include/snowboy-detect.h",
+    "swig/Node/snowboy.cc",
+    "lib/node/*.js",
+    "lib/node/*.d.ts",
+    "lib/*/libsnowboy-detect.a",
+    "resources",
+    "RELEASE-NOTES.md"
+  ]
 }
